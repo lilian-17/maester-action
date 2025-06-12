@@ -296,7 +296,7 @@ PROCESS {
 
     if ($mail_recipients -and $MailUserId -and $mail_testresultsuri) {
     Write-Host "📧 Sending test results mail to $mail_recipients..."
-    Send-MtMail -Recipients $mail_recipients -TestResultsUri $mail_testresultsuri
+    Send-MtMail -Recipients $mail_recipients #-TestResultsUri $mail_testresultsuri
     }
     else {
         Write-Host "ℹ️ Mail parameters not fully provided. Skipping mail send."
