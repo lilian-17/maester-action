@@ -19,7 +19,7 @@
     [string]$MailUser = '',
 
     [Parameter(Mandatory = $false, HelpMessage = 'The mail recipients separated by comma')]
-    [string]$mail_recipients  = '',
+    [string]$MailRecipients  = '',
 
     [Parameter(Mandatory = $false, HelpMessage = 'The test result uri')]
     [string]$TestResultURI = '',
@@ -57,7 +57,10 @@
     [Parameter(Mandatory = $false, HelpMessage = 'Teams notification teams ID')]
     [string]$TeamsTeamId = $null,
 
+    [Parameter(Mandatory = $false, HelpMessage = 'ID Mail Sender')]
     [string]$MailUserId,
+
+    [Parameter(Mandatory = $false, Helpmessage = 'URL of GitHub results')]
     [string]$mail_testresultsuri
 )
 
@@ -291,9 +294,9 @@ PROCESS {
         Write-Host "🧪 Alternative markdown report generated: $testResultsFile"
     }
 
-    if ($mail_recipients -and $MailUserId -and $mail_recipients) {
+    if ($mail_recipients -and $MailUserId -and $mail_testresultsuri) {
     Write-Host "📧 Sending test results mail to $mail_recipients..."
-    Send-MtMail -Recipients $mail_recipients -TestResultsUri $mail_recipients
+    Send-MtMail -Recipients $mail_recipients -TestResultsUri $mail_testresultsuri
     }
     else {
         Write-Host "ℹ️ Mail parameters not fully provided. Skipping mail send."
