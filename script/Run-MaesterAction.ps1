@@ -57,7 +57,6 @@
     [Parameter(Mandatory = $false, HelpMessage = 'Teams notification teams ID')]
     [string]$TeamsTeamId = $null,
 
-    [string]$MailRecipients,
     [string]$MailUserId,
     [string]$MailTestResultsUri
 )
