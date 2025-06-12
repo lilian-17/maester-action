@@ -56,6 +56,10 @@
 
     [Parameter(Mandatory = $false, HelpMessage = 'Teams notification teams ID')]
     [string]$TeamsTeamId = $null
+
+    [string]$MailRecipients,
+    [string]$MailUserId,
+    [string]$MailTestResultsUri
 )
 
 BEGIN {
@@ -286,6 +290,14 @@ PROCESS {
         $markdownReport = Get-MtMarkdownReportAction $results $templateFile
         $markdownReport | Out-File -FilePath $testResultsFile -Encoding UTF8 -Force
         Write-Host "🧪 Alternative markdown report generated: $testResultsFile"
+    }
+
+    if ($MailRecipients -and $MailUserId -and $MailTestResultsUri) {
+    Write-Host "📧 Sending test results mail to $MailRecipients..."
+    Send-MtMail -UserId $MailUserId -Recipients $MailRecipients -TestResultsUri $MailTestResultsUri
+    }
+    else {
+        Write-Host "ℹ️ Mail parameters not fully provided. Skipping mail send."
     }
 
     # Write the markdown report to the Github step summary file
