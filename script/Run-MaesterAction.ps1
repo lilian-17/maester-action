@@ -58,7 +58,7 @@
     [string]$TeamsTeamId = $null,
 
     [string]$MailUserId,
-    [string]mail_testresultsuri
+    [string]$mail_testresultsuri
 )
 
 BEGIN {
