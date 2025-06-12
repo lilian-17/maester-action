@@ -19,7 +19,7 @@
     [string]$MailUser = '',
 
     [Parameter(Mandatory = $false, HelpMessage = 'The mail recipients separated by comma')]
-    [string]$MailRecipients = '',
+    [string]$mail_recipients  = '',
 
     [Parameter(Mandatory = $false, HelpMessage = 'The test result uri')]
     [string]$TestResultURI = '',
@@ -58,7 +58,7 @@
     [string]$TeamsTeamId = $null,
 
     [string]$MailUserId,
-    [string]$MailTestResultsUri
+    [string]mail_testresultsuri
 )
 
 BEGIN {
@@ -292,8 +292,8 @@ PROCESS {
     }
 
     if ($MailRecipients -and $MailUserId -and $MailTestResultsUri) {
-    Write-Host "📧 Sending test results mail to $MailRecipients..."
-    Send-MtMail  -Recipients $MailRecipients -TestResultsUri $MailTestResultsUri
+    Write-Host "📧 Sending test results mail to $mail_recipients..."
+    Send-MtMail  -Recipients $mail_recipients -TestResultsUri $mail_testresultsuri
     }
     else {
         Write-Host "ℹ️ Mail parameters not fully provided. Skipping mail send."
