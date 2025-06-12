@@ -55,7 +55,7 @@
     [string]$TeamsChannelId = $null,
 
     [Parameter(Mandatory = $false, HelpMessage = 'Teams notification teams ID')]
-    [string]$TeamsTeamId = $null
+    [string]$TeamsTeamId = $null,
 
     [string]$MailRecipients,
     [string]$MailUserId,
