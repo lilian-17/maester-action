@@ -291,9 +291,9 @@ PROCESS {
         Write-Host "🧪 Alternative markdown report generated: $testResultsFile"
     }
 
-    if ($MailRecipients -and $MailUserId -and $MailTestResultsUri) {
+    if ($mail_recipients -and $MailUserId -and $mail_recipients) {
     Write-Host "📧 Sending test results mail to $mail_recipients..."
-    Send-MtMail  -Recipients $mail_recipients -TestResultsUri $mail_testresultsuri
+    Send-MtMail -Recipients $mail_recipients -TestResultsUri $mail_recipients
     }
     else {
         Write-Host "ℹ️ Mail parameters not fully provided. Skipping mail send."
