@@ -204,7 +204,7 @@ PROCESS {
     if ( [string]::IsNullOrWhiteSpace($MailUser) -eq $false ) {
         if ( [string]::IsNullOrWhiteSpace( '$MailRecipients) -eq $false ) {
             # Add mail parameters
-            $MaesterParameters.Add( 'MailUserId', $MailUser )
+            $MaesterParameters.Add('MailUserId', $MailUser)
             $Recipients = $MailRecipients -split ','
             $MaesterParameters.Add( 'MailRecipient', $Recipients )
             $MaesterParameters.Add( 'MailTestResultsUri', $TestResultURI )
