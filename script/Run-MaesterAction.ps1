@@ -198,7 +198,7 @@ PROCESS {
     }
     Write-Host "MailUser: $MailUser"
     Write-Host "MailRecipients: $MailRecipients"
-    Write-Host "TestResultURI: $TestResultURI
+    Write-Host "TestResultURI: $TestResultURI"
 
     # Check if mail recipients and mail userid are provided
     if ( [string]::IsNullOrWhiteSpace($MailUser) -eq $false ) {
