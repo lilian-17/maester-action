@@ -334,7 +334,7 @@ PROCESS {
 
 }
 END {
-    Write-Host '🏁 Maester tests completed!'
+    Write-Host 'Maester tests completed!'
     exit 0
     return
 }
