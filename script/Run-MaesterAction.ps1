@@ -285,12 +285,19 @@ PROCESS {
         }
     }
 
-    #Envoie du mail
-    try {
-        Write-Host "Tentative d'envoie de mail"
-        Send-MtMail -MaesterResults $results -Recipient $MailRecipients -Subject 'Maester Results' -TestResultsUri $TestResultURI
-    } catch {
-        Write-Host "Erreur : Mail non envoyé" }
+    # Envoi du mail
+try {
+    Write-Host "Tentative d'envoi de mail..."
+
+    # Appel de la fonction pour envoyer l'email
+    Send-MtMail -MaesterResults $results -Recipient $MailRecipients -Subject 'Maester Results' -TestResultsUri $TestResultURI
+
+    Write-Host "Mail envoyé avec succès."
+} catch {
+    Write-Host "Erreur : Mail non envoyé"
+    Write-Host "Détails de l'erreur : $_"
+}
+
         
     # Replace test results markdown file with the new one
     # Check if the 'Get-MtMarkdownReportAction' function is available, this is an improved version to fix all reports under version 1.0.79-preview
