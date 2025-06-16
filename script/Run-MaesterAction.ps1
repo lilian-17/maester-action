@@ -290,7 +290,7 @@ try {
     Write-Host "Tentative d'envoi de mail..."
 
     # Appel de la fonction pour envoyer l'email
-    Send-MtMail -MaesterResults $results -Recipient $MailRecipients -Subject 'Maester Results' -TestResultsUri $TestResultURI
+    Send-MtMail -MaesterResults $results -UserId $MailUser -Recipient $MailRecipients -Subject 'Maester Results' -TestResultsUri $TestResultURI
 
     Write-Host "Mail envoyé avec succès."
 } catch {
