@@ -209,6 +209,7 @@ PROCESS {
             $MaesterParameters.Add( 'MailRecipient', $Recipients )
             $MaesterParameters.Add( 'MailTestResultsUri', $TestResultURI )
             Write-Host "📃 Mail notification configured"
+            
         } else {
             Write-Warning 'Mail recipients are not provided. Skipping mail notification.'
         }
@@ -284,7 +285,13 @@ PROCESS {
         }
     }
 
-
+    #Envoie du mail
+    try {
+        Write-Host "Tentative d'envoie de mail"
+        Send-MtMail -MaesterResults $results -Recipient $MailRecipients -Subject 'Maester Results' -TestResultsUri $TestResultURI
+    } catch {
+        Write-Host "Erreur : Mail non envoyé" }
+        
     # Replace test results markdown file with the new one
     # Check if the 'Get-MtMarkdownReportAction' function is available, this is an improved version to fix all reports under version 1.0.79-preview
     if (Get-Command Get-MtMarkdownReportAction -ErrorAction SilentlyContinue) {
